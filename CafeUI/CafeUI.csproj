@@ -44,10 +44,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
+    <Compile Include="ProgramUI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CafePOCO\CafePOCO.csproj">
+      <Project>{1696181C-5743-4975-A062-48266D02BA51}</Project>
+      <Name>CafePOCO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CafeRepository\CafeRepository.csproj">
+      <Project>{6e7aed58-cdf4-4b70-801b-882894910b81}</Project>
+      <Name>CafeRepository</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

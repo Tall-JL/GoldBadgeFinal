@@ -1,0 +1,6 @@
+C:\Users\bigja\source\repos\GoldBadgeFinal\CafePOCO\bin\Debug\CafePOCO.dll
+C:\Users\bigja\source\repos\GoldBadgeFinal\CafePOCO\bin\Debug\CafePOCO.pdb
+C:\Users\bigja\source\repos\GoldBadgeFinal\CafePOCO\obj\Debug\CafePOCO.csproj.AssemblyReference.cache
+C:\Users\bigja\source\repos\GoldBadgeFinal\CafePOCO\obj\Debug\CafePOCO.csproj.CoreCompileInputs.cache
+C:\Users\bigja\source\repos\GoldBadgeFinal\CafePOCO\obj\Debug\CafePOCO.dll
+C:\Users\bigja\source\repos\GoldBadgeFinal\CafePOCO\obj\Debug\CafePOCO.pdb
