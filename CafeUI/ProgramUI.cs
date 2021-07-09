@@ -10,12 +10,15 @@ namespace CafeUI
 {
     class ProgramUI
     {
-        private MenuItemRepo _items = new MenuItemRepo(); 
+        private MenuItemRepo _itemsOnMenu = new MenuItemRepo();
+        
+        
+        
         public void Run()
         {
+            SeedMenuItem();
             Menu();
-        }
-
+        }       
         private void Menu()
         {
             bool keepRunning = true;
@@ -23,8 +26,8 @@ namespace CafeUI
             {
                 Console.WriteLine("Select a menu option:\n" +
                 "1. View Menu Items\n" +
-                "2. Create Menu Item\n" +
-                "3. Add Ingredient to Item\n" +
+                "2. View Ingredients on food item\n" +
+                "3. Create Menu Item\n" +                
                 "4. Delete Menu Item\n" +
                 "5. Exit");
 
@@ -36,11 +39,11 @@ namespace CafeUI
                         ViewMenuItems();
                         break;
                     case "2":
-                        CreateMenuItem();
+                        ViewIngredientsOnItem();
                         break;
                     case "3":
-                        AddIngredientToItem();
-                        break;
+                        CreateMenuItem();
+                        break;                    
                     case "4":
                         DeleteMenuItem();
                         break;
@@ -57,38 +60,91 @@ namespace CafeUI
                 Console.Clear();
             }
         }
-
-        private void DeleteMenuItem()
+        private bool DeleteMenuItem()
         {
-            throw new NotImplementedException();
-        }
+            Console.Clear();
 
-        private void AddIngredientToItem()
+            Console.WriteLine("What is the meal number of the item you'd like to delete?");
+            string input = Console.ReadLine();
+
+            bool success = _itemsOnMenu.DeleteMenuItem(input);
+
+            if (success)
+            {
+                Console.WriteLine("You've deleted item!!");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }      
+        private bool CreateMenuItem()
         {
-            throw new NotImplementedException();
-        }
+            Console.Clear();
 
-        private void CreateMenuItem()
-        {
-            throw new NotImplementedException();
-        }
+            MenuItem newItem = new MenuItem();
 
+            Console.WriteLine("What will the meal number be for this item?");
+            newItem.MealNumber = Console.ReadLine();
+
+            Console.WriteLine("What is the name of your meal item?");
+            newItem.MealName = Console.ReadLine();
+
+            Console.WriteLine("What is the description of the meal item?");
+            newItem.Description = Console.ReadLine();
+
+            Console.WriteLine("What is the price for this item?");
+            newItem.Price = Convert.ToDecimal(Console.ReadLine());         
+
+            bool wantsMore = true;
+            while (wantsMore)
+            {
+                Console.WriteLine("Do you have ingredients to add? (yes/no)");
+                string input = Console.ReadLine();
+                if (input == "yes")
+                {
+                    Ingredient newIng = new Ingredient();
+
+                    Console.WriteLine("What is the ingredient?");
+                    newIng.Name = Console.ReadLine();
+
+                    newItem.Ingredients.Add(newIng);                                      
+                    
+                }
+                else
+                {
+                    wantsMore = false;
+                }
+            }
+
+            bool success = _itemsOnMenu.AddItemToMenu(newItem);
+
+            if (success)
+            {
+                Console.WriteLine("New item made!");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }        
         private void ViewMenuItems()
         {
             Console.Clear();
             Console.WriteLine("Below are the items we have available");
             List<MenuItem> listOfItems = new List<MenuItem>();
 
-            foreach (var item in listOfItems)
+            foreach (var item in _itemsOnMenu._items)
             {
                 Console.WriteLine($"Meal Number: {item.MealNumber}\n" +
                     $"Meal Name: {item.MealName}\n" +
                     $"Meal Description: {item.Description}\n" +
-                    $"Price: {item.Price}\n");
+                    $"Price: ${item.Price}\n");
             }
 
         }
-
         public void ViewIngredientsOnItem()
         {
             Console.Clear();
@@ -97,11 +153,37 @@ namespace CafeUI
             Console.WriteLine("What menu item number would you like to see ingredients for?");
             string input = Console.ReadLine();
 
-            MenuItem foodToCheck = _items.GetMenuItemByNumber(input);
+            MenuItem foodToCheck = _itemsOnMenu.GetMenuItemByNumber(input);
             foreach (Ingredient ingredient in foodToCheck.Ingredients)
             {
                 Console.WriteLine(ingredient.Name);
             }
+        }
+        private void SeedMenuItem()
+        {
+            Ingredient ing1 = new Ingredient("Nuts");
+            Ingredient ing2 = new Ingredient("Dark Chocolate");
+            Ingredient ing3 = new Ingredient("Bacon");
+            Ingredient ing4 = new Ingredient("Eggs");
+            Ingredient ing5 = new Ingredient("Cheese");
+
+
+            MenuItem food1 = new MenuItem("1", "Bacon, Egg and Cheese Sandwich", "Relax with this tasty treat!", new List<Ingredient> { ing3, ing4, ing5 }, 4.50m);
+            MenuItem food2 = new MenuItem("2", "Brownie", "Dark Chocolate never taste so good!", new List<Ingredient> { ing1, ing2 }, 2.50m);
+            MenuItem food3 = new MenuItem("3", "Coffee", "You're the same without your first cup!", new List<Ingredient> { }, 3m);
+            MenuItem food4 = new MenuItem("4", "Frappe", "Gain that extra weight with a morning coffee milkshake!", new List<Ingredient> { }, 5m);
+
+
+            _itemsOnMenu.AddIngredientToItem(food1, "Bacon");
+            _itemsOnMenu.AddIngredientToItem(food1, "Eggs");
+            _itemsOnMenu.AddIngredientToItem(food1, "Cheese");
+            _itemsOnMenu.AddIngredientToItem(food2, "Dark Chocolate");
+            _itemsOnMenu.AddIngredientToItem(food2, "Nuts");
+
+            _itemsOnMenu.AddItemToMenu(food1);
+            _itemsOnMenu.AddItemToMenu(food2);
+            _itemsOnMenu.AddItemToMenu(food3);
+            _itemsOnMenu.AddItemToMenu(food4);
         }
     }
 }

@@ -1,2 +1,12 @@
 C:\Users\bigja\source\repos\GoldBadgeFinal\CafeUI\obj\Debug\CafeUI.csproj.AssemblyReference.cache
 C:\Users\bigja\source\repos\GoldBadgeFinal\CafeUI\obj\Debug\CafeUI.csproj.CoreCompileInputs.cache
+C:\Users\bigja\source\repos\GoldBadgeFinal\CafeUI\bin\Debug\CafeUI.exe.config
+C:\Users\bigja\source\repos\GoldBadgeFinal\CafeUI\bin\Debug\CafeUI.exe
+C:\Users\bigja\source\repos\GoldBadgeFinal\CafeUI\bin\Debug\CafeUI.pdb
+C:\Users\bigja\source\repos\GoldBadgeFinal\CafeUI\bin\Debug\CafePOCO.dll
+C:\Users\bigja\source\repos\GoldBadgeFinal\CafeUI\bin\Debug\CafeRepository.dll
+C:\Users\bigja\source\repos\GoldBadgeFinal\CafeUI\bin\Debug\CafePOCO.pdb
+C:\Users\bigja\source\repos\GoldBadgeFinal\CafeUI\bin\Debug\CafeRepository.pdb
+C:\Users\bigja\source\repos\GoldBadgeFinal\CafeUI\obj\Debug\CafeUI.csproj.CopyComplete
+C:\Users\bigja\source\repos\GoldBadgeFinal\CafeUI\obj\Debug\CafeUI.exe
+C:\Users\bigja\source\repos\GoldBadgeFinal\CafeUI\obj\Debug\CafeUI.pdb

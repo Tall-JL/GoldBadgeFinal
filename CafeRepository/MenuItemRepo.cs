@@ -22,14 +22,14 @@ namespace CafeRepository
         {
             Ingredient foodItem = GetIngredientByName(ingredientName);
 
-            if (name != null)
+            if (name == null)
             {
-                name.Ingredients.Add(foodItem);
-                return true;
+               return false;
             }
             else
             {
-                return false;
+                name.Ingredients.Add(foodItem);
+                return true;
             }
 
         }
@@ -39,7 +39,6 @@ namespace CafeRepository
         }
         public bool DeleteMenuItem(string mealNumber)
         {
-
             MenuItem item = GetMenuItemByNumber(mealNumber);
 
             if (item == null)

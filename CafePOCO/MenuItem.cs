@@ -9,8 +9,7 @@ using System.Threading.Tasks;
 namespace CafePOCO
 {
     public class MenuItem 
-    {
-        
+    {        
         public string MealNumber { get; set; }
         public string MealName { get; set; }
         public string Description { get; set; }
