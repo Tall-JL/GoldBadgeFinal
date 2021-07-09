@@ -34,7 +34,6 @@ namespace CafeUnitTest
             Assert.IsTrue(result);
 
         }
-
         [TestMethod]
         public void AddIgredientToItem_IngredientIsAdded_ReturnTrue()
         {
@@ -74,7 +73,7 @@ namespace CafeUnitTest
             //Arrange
             string number = "1";
             //Act
-             MenuItem result = _items.GetMenuItemByNumber("1");
+             MenuItem result = _items.GetMenuItemByNumber(number);
             //Assert
             Assert.AreEqual(result.MealNumber, number);
 
@@ -89,19 +88,7 @@ namespace CafeUnitTest
             //Assert
             Assert.IsNull(result);
 
-        } 
-        [TestMethod]
-        public void GetIngredientByName_NotNull_ReturnItem()
-        {
-            //Arrange
-            Ingredient ing = new Ingredient();
-            ing.Name = "Nuts";
-            //Act
-            Ingredient result = _items.GetIngredientByName("Nuts");
-            //Assert
-            Assert.AreEqual(result.Name, ing.Name);
-
-        } 
+        }         
         [TestMethod]
         public void GetIngredientName_IsNull_ReturnNull()
         {
