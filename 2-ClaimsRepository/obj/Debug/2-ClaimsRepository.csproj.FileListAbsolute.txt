@@ -1,0 +1,9 @@
+C:\Users\bigja\source\repos\GoldBadgeFinal\2-ClaimsRepository\bin\Debug\2-ClaimsRepository.dll
+C:\Users\bigja\source\repos\GoldBadgeFinal\2-ClaimsRepository\bin\Debug\2-ClaimsRepository.pdb
+C:\Users\bigja\source\repos\GoldBadgeFinal\2-ClaimsRepository\bin\Debug\2-ClaimsPOCO.dll
+C:\Users\bigja\source\repos\GoldBadgeFinal\2-ClaimsRepository\bin\Debug\2-ClaimsPOCO.pdb
+C:\Users\bigja\source\repos\GoldBadgeFinal\2-ClaimsRepository\obj\Debug\2-ClaimsRepository.csproj.AssemblyReference.cache
+C:\Users\bigja\source\repos\GoldBadgeFinal\2-ClaimsRepository\obj\Debug\2-ClaimsRepository.csproj.CoreCompileInputs.cache
+C:\Users\bigja\source\repos\GoldBadgeFinal\2-ClaimsRepository\obj\Debug\2-ClaimsRepository.csproj.CopyComplete
+C:\Users\bigja\source\repos\GoldBadgeFinal\2-ClaimsRepository\obj\Debug\2-ClaimsRepository.dll
+C:\Users\bigja\source\repos\GoldBadgeFinal\2-ClaimsRepository\obj\Debug\2-ClaimsRepository.pdb

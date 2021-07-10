@@ -130,6 +130,7 @@ namespace CafeUI
                 return false;
             }
         }        
+        //check list of items new obj................
         private void ViewMenuItems()
         {
             Console.Clear();

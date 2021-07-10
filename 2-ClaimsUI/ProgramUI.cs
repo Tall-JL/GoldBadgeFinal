@@ -1,4 +1,6 @@
-﻿using System;
+﻿using _2_ClaimsPOCO;
+using _2_ClaimsRepository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +10,7 @@ namespace _2_ClaimsUI
 {
     class ProgramUI
     {
+        ClaimsRepo _claimsInQueue = new ClaimsRepo();
         public void Run()
         {
             SeedMenuItem();
@@ -66,12 +69,34 @@ namespace _2_ClaimsUI
 
         private void ViewAllClaims()
         {
-            throw new NotImplementedException();
+            Console.Clear();
+            Console.WriteLine("Below are all current claims\n\n");
+
+            foreach (var claim in _claimsInQueue._claims)
+            {
+                Console.WriteLine($"Claim ID: {claim.ClaimID}\n" +
+                    $"Claim Type: {claim.ClaimType}\n" +
+                    $"Description: {claim.Description}\n" +
+                    $"Claims Amount: ${claim.ClaimAmount}\n" +
+                    $"Date of Incident: {claim.DateOfIncident}\n" +
+                    $"Date of Claim: {claim.DateOfClaim}\n" +
+                    $"IsVald: {claim.IsValid}\n");
+            }
         }
 
         private void SeedMenuItem()
         {
-            throw new NotImplementedException();
+            ClaimsModel claim1 = new ClaimsModel(ClaimType.Car,"Hit and Run", 500, new DateTime(2021, 4, 21)) ;
+            ClaimsModel claim2 = new ClaimsModel(ClaimType.Home,"Meteor hit house", 170000, new DateTime(2021, 7, 2)) ;
+            ClaimsModel claim3 = new ClaimsModel(ClaimType.Theft,"Stolen sword", 250, new DateTime(2021, 2, 14)) ;
+            ClaimsModel claim4 = new ClaimsModel(ClaimType.Car,"Dinosuar trampled car", 30000, new DateTime(2021, 1, 12)) ;
+            ClaimsModel claim5 = new ClaimsModel(ClaimType.Theft,"Refridgerator ran away", 3000, new DateTime(2021, 7, 9)) ;
+
+            _claimsInQueue.AddToQueue(claim1);
+            _claimsInQueue.AddToQueue(claim2);
+            _claimsInQueue.AddToQueue(claim3);
+            _claimsInQueue.AddToQueue(claim4);
+            _claimsInQueue.AddToQueue(claim5);
         }
     }
 }
