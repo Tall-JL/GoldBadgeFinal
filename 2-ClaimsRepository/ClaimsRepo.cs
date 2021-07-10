@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace _2_ClaimsRepository
 {
-    public class Class1
+    public class ClaimsRepo
     {
+
     }
 }
