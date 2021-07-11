@@ -19,6 +19,8 @@ namespace _2_ClaimsUI
 
         private void Menu()
         {
+            Console.Clear();
+
             bool keepRunning = true;
             while (keepRunning)
             {
@@ -54,17 +56,113 @@ namespace _2_ClaimsUI
                 Console.Clear();
             }
 
-            
+
         }
 
-        private void NewClaim()
+        private bool NewClaim()
         {
-            throw new NotImplementedException();
+            ClaimsModel newClaim = new ClaimsModel();
+
+            Console.Clear();
+            Console.WriteLine("Enter number of claim type.\n\n" +
+                "1. Car\n" +
+                "2. Home\n" +
+                "3. Theft\n");
+            string input = Console.ReadLine();
+            int intInput = int.Parse(input);
+            newClaim.ClaimType = (ClaimType)intInput;
+
+            Console.WriteLine("What is the description of claim?");
+            newClaim.Description = Console.ReadLine();
+
+            Console.WriteLine("What is the claim amount?");
+            newClaim.ClaimAmount = Console.ReadLine();
+
+            Console.WriteLine("What date did this claim occur? (year, month, day)");
+            newClaim.DateOfIncident = DateTime.Parse(Console.ReadLine());
+
+            //string claimOccurance = Console.ReadLine();
+            //DateTime result;
+
+            //if (DateTime.TryParse(claimOccurance, out result))
+            //{
+            //    return result;
+            //}
+            //else
+            //{
+            //    return null;
+            //}
+
+            //newClaim.DateOfIncident = result;
+
+            bool success = true;
+
+            if (success)
+            {
+                _claimsInQueue.AddToQueue(newClaim);
+                Console.WriteLine("You've successfully added a claim!");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("You've failed to add a claim...");
+                return false;
+            }
+
+
+
         }
 
         private void NextClaim()
         {
-            throw new NotImplementedException();
+            //ClaimsModel nextClaim = new ClaimsModel();
+            Queue<ClaimsModel> nextClaim = new Queue<ClaimsModel>();
+
+            Console.Clear();
+            Console.WriteLine("Here are the details of the next claim to be handled.");
+
+            _claimsInQueue._claims.Peek();
+
+            Console.WriteLine("Do you want to deal with this claim? (y/n)");
+            string input = Console.ReadLine().ToLower();
+
+            bool handlingQueue = true;
+            while (handlingQueue)
+            {
+                if (input == "y" && _claimsInQueue._claims.Count > 0)
+                {
+
+                    _claimsInQueue._claims.Dequeue();
+                    Console.WriteLine("Claim removed from queue.");
+                    Console.ReadKey();
+                    NextClaim();
+
+
+                }
+                else if(input == "n")
+                {
+                    Console.WriteLine("Returning to main menu.");
+                    Console.ReadKey();
+                    handlingQueue = false;
+                    Menu();
+                }
+                else if(_claimsInQueue._claims.Count == 0)
+                {
+                    Console.WriteLine("No claims in queue.");
+                    Console.ReadKey();
+                    handlingQueue = false;
+                    Menu();
+                }
+                else
+                {
+                    Console.WriteLine("Enter y or n!");
+                    Console.ReadKey();
+                    handlingQueue = false;
+                    NextClaim();
+                }
+
+            }
+            
         }
 
         private void ViewAllClaims()
@@ -86,12 +184,13 @@ namespace _2_ClaimsUI
 
         private void SeedMenuItem()
         {
-            ClaimsModel claim1 = new ClaimsModel(ClaimType.Car,"Hit and Run", 500, new DateTime(2021, 4, 21)) ;
-            ClaimsModel claim2 = new ClaimsModel(ClaimType.Home,"Meteor hit house", 170000, new DateTime(2021, 7, 2)) ;
-            ClaimsModel claim3 = new ClaimsModel(ClaimType.Theft,"Stolen sword", 250, new DateTime(2021, 2, 14)) ;
-            ClaimsModel claim4 = new ClaimsModel(ClaimType.Car,"Dinosuar trampled car", 30000, new DateTime(2021, 1, 12)) ;
-            ClaimsModel claim5 = new ClaimsModel(ClaimType.Theft,"Refridgerator ran away", 3000, new DateTime(2021, 7, 9)) ;
+            ClaimsModel claim1 = new ClaimsModel(ClaimType.Car, "Hit and Run", "500", new DateTime(2021, 4, 21));
+            ClaimsModel claim2 = new ClaimsModel(ClaimType.Home, "Meteor hit house", "1700,00", new DateTime(2021, 7, 2));
+            ClaimsModel claim3 = new ClaimsModel(ClaimType.Theft, "Stolen sword", "250", new DateTime(2021, 2, 14));
+            ClaimsModel claim4 = new ClaimsModel(ClaimType.Car, "Dinosuar trampled car", "30,000", new DateTime(2021, 1, 12));
+            ClaimsModel claim5 = new ClaimsModel(ClaimType.Theft, "Refridgerator ran away", "3,000", new DateTime(2021, 7, 9));
 
+            
             _claimsInQueue.AddToQueue(claim1);
             _claimsInQueue.AddToQueue(claim2);
             _claimsInQueue.AddToQueue(claim3);

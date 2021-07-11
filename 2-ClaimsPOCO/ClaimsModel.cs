@@ -17,7 +17,7 @@ namespace _2_ClaimsPOCO
         public int ClaimID { get; set; }
         public ClaimType ClaimType { get; set; }
         public string Description { get; set; }
-        public int ClaimAmount { get; set; }
+        public string ClaimAmount { get; set; }
         public DateTime DateOfIncident { get; set; }
         public DateTime DateOfClaim { get; set; }
         public bool IsValid { get; set; }
@@ -26,7 +26,7 @@ namespace _2_ClaimsPOCO
         {
 
         }
-        public ClaimsModel(ClaimType claimType, string description, int claimAmount, DateTime dateOfIncident)
+        public ClaimsModel(ClaimType claimType, string description, string claimAmount, DateTime dateOfIncident)
         {
             
             ClaimType = claimType;

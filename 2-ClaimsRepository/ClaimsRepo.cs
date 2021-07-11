@@ -24,15 +24,23 @@ namespace _2_ClaimsRepository
             return true;
         }
 
+
         public Queue<ClaimsModel> ViewAllClaims()
         {
             return _claims;
         }
 
-        //public bool HandleNextClaim()
+        //public Queue<ClaimsModel> HandleNextClaim()
         //{
-
+        //    //ClaimsModel claimsToPeek = new ClaimsModel();
+        //    //Queue<ClaimsModel> claimsToPeek = new Queue<ClaimsModel>();
+            
+        //    Console.WriteLine();
+        //    return true;
+           
+            
         //}
+        
 
         private int IdCounter() => ++_idCounter;
         private DateTime ClaimsDate() => DateTime.Now;
