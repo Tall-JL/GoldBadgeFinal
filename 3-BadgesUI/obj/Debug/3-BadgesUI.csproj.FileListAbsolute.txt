@@ -1,0 +1,12 @@
+C:\Users\bigja\source\repos\GoldBadgeFinal\3-BadgesUI\bin\Debug\3-BadgesUI.exe.config
+C:\Users\bigja\source\repos\GoldBadgeFinal\3-BadgesUI\bin\Debug\3-BadgesUI.exe
+C:\Users\bigja\source\repos\GoldBadgeFinal\3-BadgesUI\bin\Debug\3-BadgesUI.pdb
+C:\Users\bigja\source\repos\GoldBadgeFinal\3-BadgesUI\bin\Debug\3-BadgesPOCO.dll
+C:\Users\bigja\source\repos\GoldBadgeFinal\3-BadgesUI\bin\Debug\3-BadgesRepository.dll
+C:\Users\bigja\source\repos\GoldBadgeFinal\3-BadgesUI\bin\Debug\3-BadgesPOCO.pdb
+C:\Users\bigja\source\repos\GoldBadgeFinal\3-BadgesUI\bin\Debug\3-BadgesRepository.pdb
+C:\Users\bigja\source\repos\GoldBadgeFinal\3-BadgesUI\obj\Debug\3-BadgesUI.csproj.AssemblyReference.cache
+C:\Users\bigja\source\repos\GoldBadgeFinal\3-BadgesUI\obj\Debug\3-BadgesUI.csproj.CoreCompileInputs.cache
+C:\Users\bigja\source\repos\GoldBadgeFinal\3-BadgesUI\obj\Debug\3-BadgesUI.csproj.CopyComplete
+C:\Users\bigja\source\repos\GoldBadgeFinal\3-BadgesUI\obj\Debug\3-BadgesUI.exe
+C:\Users\bigja\source\repos\GoldBadgeFinal\3-BadgesUI\obj\Debug\3-BadgesUI.pdb

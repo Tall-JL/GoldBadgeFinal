@@ -1,0 +1,9 @@
+C:\Users\bigja\source\repos\GoldBadgeFinal\3-BadgesRepository\bin\Debug\3-BadgesRepository.dll
+C:\Users\bigja\source\repos\GoldBadgeFinal\3-BadgesRepository\bin\Debug\3-BadgesRepository.pdb
+C:\Users\bigja\source\repos\GoldBadgeFinal\3-BadgesRepository\bin\Debug\3-BadgesPOCO.dll
+C:\Users\bigja\source\repos\GoldBadgeFinal\3-BadgesRepository\bin\Debug\3-BadgesPOCO.pdb
+C:\Users\bigja\source\repos\GoldBadgeFinal\3-BadgesRepository\obj\Debug\3-BadgesRepository.csproj.AssemblyReference.cache
+C:\Users\bigja\source\repos\GoldBadgeFinal\3-BadgesRepository\obj\Debug\3-BadgesRepository.csproj.CoreCompileInputs.cache
+C:\Users\bigja\source\repos\GoldBadgeFinal\3-BadgesRepository\obj\Debug\3-BadgesRepository.csproj.CopyComplete
+C:\Users\bigja\source\repos\GoldBadgeFinal\3-BadgesRepository\obj\Debug\3-BadgesRepository.dll
+C:\Users\bigja\source\repos\GoldBadgeFinal\3-BadgesRepository\obj\Debug\3-BadgesRepository.pdb

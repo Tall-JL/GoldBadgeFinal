@@ -44,10 +44,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
+    <Compile Include="ProgramUI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\3-BadgesPOCO\3-BadgesPOCO.csproj">
+      <Project>{ee65d435-e39b-48ed-b2c2-ce69234cfb91}</Project>
+      <Name>3-BadgesPOCO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\3-BadgesRepository\3-BadgesRepository.csproj">
+      <Project>{8f6bb504-2527-4d95-a087-f822296d9bd0}</Project>
+      <Name>3-BadgesRepository</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

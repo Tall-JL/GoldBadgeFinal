@@ -13,7 +13,7 @@ namespace _2_ClaimsUI
         ClaimsRepo _claimsInQueue = new ClaimsRepo();
         public void Run()
         {
-            SeedMenuItem();
+            SeedClaims();
             Menu();
         }
 
@@ -24,7 +24,7 @@ namespace _2_ClaimsUI
             bool keepRunning = true;
             while (keepRunning)
             {
-                Console.WriteLine("Select a menu option:\n" +
+                Console.WriteLine("What would you like to do?\n" +
                 "1. View all claims\n" +
                 "2. Next claim\n" +
                 "3. New claim\n" +
@@ -121,7 +121,7 @@ namespace _2_ClaimsUI
             Console.Clear();
             Console.WriteLine("Here are the details of the next claim to be handled.");
 
-            _claimsInQueue._claims.Peek();
+            _claimsInQueue.HandleNextClaim();
 
             Console.WriteLine("Do you want to deal with this claim? (y/n)");
             string input = Console.ReadLine().ToLower();
@@ -182,7 +182,7 @@ namespace _2_ClaimsUI
             }
         }
 
-        private void SeedMenuItem()
+        private void SeedClaims()
         {
             ClaimsModel claim1 = new ClaimsModel(ClaimType.Car, "Hit and Run", "500", new DateTime(2021, 4, 21));
             ClaimsModel claim2 = new ClaimsModel(ClaimType.Home, "Meteor hit house", "1700,00", new DateTime(2021, 7, 2));
