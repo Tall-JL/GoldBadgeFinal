@@ -9,27 +9,41 @@ namespace _3_BadgesRepository
 {
     public class BadgesRepo
     {
-        public Dictionary<int, List<string>> _badges = new Dictionary<int, List<string>>();
-        //private int _idCounter = default;
 
-        public void AddBadge(int key, string value)
-        {
-            if (!_badges.ContainsKey(key))
-            {
-                _badges.Add(key, new List<string>());
-            }
-            _badges[key].Add(value);
-        }
-
-        public void ViewAllBadges()
-        {
-            foreach (var keyValuePair in _badges)
-            {
-                Console.WriteLine($"Key: {keyValuePair.Key}, Value: {keyValuePair.Value.ToString()}");
-            }
-            
-        }
-
+        private readonly Dictionary<int, BadgesModel> _badges = new Dictionary<int, BadgesModel>();
+        private int _idCounter = default;
         //public int idCounter() => ++_idCounter;
+
+        public bool AddBadge(BadgesModel newBadge)
+        {
+            if (newBadge == null)
+            {
+                return false;
+            }
+            else
+            {
+                _idCounter++;
+                newBadge.BadgeID = _idCounter;
+                _badges.Add(newBadge.BadgeID, newBadge);
+                return true;
+            }
+        }
+
+        public Dictionary<int, BadgesModel> ViewAllBadges()
+        {
+            return _badges;
+        }
+
+        public BadgesModel GetBadgeByKey(int badgeKey)
+        {
+            foreach (var badge in _badges)
+            {
+                if (badge.Key == badgeKey)
+                {
+                    return badge.Value;
+                }
+            }
+            return null;
+        }
     }
 }

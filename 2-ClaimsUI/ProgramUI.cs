@@ -122,7 +122,7 @@ namespace _2_ClaimsUI
             Console.WriteLine("Here are the details of the next claim to be handled.");
 
 
-            _claimsInQueue.HandleNextClaim();
+             DisplayClaimInfo( _claimsInQueue.HandleNextClaim());
 
             Console.WriteLine("Do you want to deal with this claim? (y/n)");
             string input = Console.ReadLine().ToLower();
@@ -164,6 +164,16 @@ namespace _2_ClaimsUI
 
             }
             
+        }
+        private void DisplayClaimInfo(ClaimsModel claimInfo)
+        {
+            Console.WriteLine($"Claim ID: {claimInfo.ClaimID}\n" +
+                $"ClaimType: {claimInfo.ClaimType}\n" +
+                $"Description: {claimInfo.Description}\n" +
+                $"ClaimAmount: {claimInfo.ClaimAmount}\n" +
+                $"Date of Incident: {claimInfo.DateOfIncident}\n" +
+                $"Date of Claim: {claimInfo.DateOfClaim}\n" +
+                $"IsValid: {claimInfo.IsValid}\n");
         }
 
         private void ViewAllClaims()

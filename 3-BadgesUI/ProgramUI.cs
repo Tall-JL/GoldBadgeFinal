@@ -70,9 +70,29 @@ namespace _3_BadgesUI
             Console.Clear();
             Console.WriteLine("Here are all badges currently on the system.");
 
-            _badgesRepo.ViewAllBadges();
+            var badgesInDatabase = _badgesRepo.ViewAllBadges();
+
+            ViewAllBadgesData(badgesInDatabase);
         }
 
+        public void ViewAllBadgesData(Dictionary<int, BadgesModel> badgesModel)
+        {
+            foreach (var badge in badgesModel.Values)
+            {
+                Console.WriteLine($"Badge ID: {badge.BadgeID}\n" +
+                $"Badge Name: {badge.BadgeName}");
+
+
+                foreach (var door in badge.DoorNames)
+                {
+                    Console.WriteLine($"Door Names: {door}");
+                    
+                }
+                Console.WriteLine();
+                Console.WriteLine("------------------------------");
+            }
+
+        }
         private void CreateBadge()
         {
             Console.Clear();
@@ -82,7 +102,7 @@ namespace _3_BadgesUI
 
             Console.WriteLine("Badge Creation:\n" +
                 "What is the badge number?\n");
-            newBadge.BadgeID = Int32.Parse(Console.ReadLine());            
+            newBadge.BadgeID = Int32.Parse(Console.ReadLine());
 
             while (needMoreDoors)
             {
@@ -105,28 +125,34 @@ namespace _3_BadgesUI
                     needMoreDoors = false;
                     Menu();
                 }
-                
+
             }
         }
 
         private void SeedBadges()
         {
-            _badgesList.Add(1, new List<string>());
-            _badgesList.Add(2, new List<string>());
-            _badgesList.Add(3, new List<string>());
-            _badgesList.Add(4, new List<string>());
-            _badgesList.Add(5, new List<string>());
+            //_badgesList.Add(1, new List<string>());
+            //_badgesList.Add(2, new List<string>());
+            //_badgesList.Add(3, new List<string>());
+            //_badgesList.Add(4, new List<string>());
+            //_badgesList.Add(5, new List<string>());
 
-            _badgesList[1].Add("A1");
-            _badgesList[1].Add("A2");
-            _badgesList[2].Add("B1");
-            _badgesList[2].Add("B2");
-            _badgesList[3].Add("C1");
-            _badgesList[3].Add("C2");
-            _badgesList[4].Add("D5");
-            _badgesList[5].Add("E12");
+            //_badgesList[1].Add("A1");
+            //_badgesList[1].Add("A2");
+            //_badgesList[2].Add("B1");
+            //_badgesList[2].Add("B2");
+            //_badgesList[3].Add("C1");
+            //_badgesList[3].Add("C2");
+            //_badgesList[4].Add("D5");
+            //_badgesList[5].Add("E12");
 
+            BadgesModel badgeA = new BadgesModel(new List<string> { "A1", "A2", "A3" }, "Main Badge");
+            BadgesModel badgeB = new BadgesModel(new List<string> { "B1", "E3" }, "Main Badge");
+            BadgesModel badgeC = new BadgesModel(new List<string> { "A10", "C2", "B3" }, "Main Badge");
 
+            _badgesRepo.AddBadge(badgeA);
+            _badgesRepo.AddBadge(badgeB);
+            _badgesRepo.AddBadge(badgeC);
         }
     }
 }

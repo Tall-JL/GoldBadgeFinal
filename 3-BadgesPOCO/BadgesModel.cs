@@ -9,7 +9,7 @@ namespace _3_BadgesPOCO
     public class BadgesModel
     {
         public int BadgeID { get; set; }
-        public List<string> DoorNames { get; set; }
+        public List<string> DoorNames { get; set; } = new List<string>();
         public string BadgeName { get; set; }
 
         public BadgesModel()
@@ -17,9 +17,9 @@ namespace _3_BadgesPOCO
 
         }
 
-        public BadgesModel(int badgeID, List<string> doorNames, string badgeName)
+        public BadgesModel(List<string> doorNames, string badgeName)
         {
-            BadgeID = badgeID;
+            
             DoorNames = doorNames;
             BadgeName = badgeName;
         }
