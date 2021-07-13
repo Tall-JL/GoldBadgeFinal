@@ -9,23 +9,23 @@ namespace _3_BadgesRepository
 {
     public class BadgesRepo
     {
-        Dictionary<int, List<string>> _badges = new Dictionary<int, List<string>>();
+        public Dictionary<int, List<string>> _badges = new Dictionary<int, List<string>>();
         //private int _idCounter = default;
 
-        //public void AddBadge(int key, List<string> value)
-        //{
-        //    if (!_badges.ContainsKey(key))
-        //    {
-        //        _badges.Add(key, new List<string>());
-        //    }
-        //    _badges[key].Add(value);
-        //}
+        public void AddBadge(int key, string value)
+        {
+            if (!_badges.ContainsKey(key))
+            {
+                _badges.Add(key, new List<string>());
+            }
+            _badges[key].Add(value);
+        }
 
         public void ViewAllBadges()
         {
-            foreach (KeyValuePair<int, List<string>> keyValuePair in _badges)
+            foreach (var keyValuePair in _badges)
             {
-                Console.WriteLine($"Key: {keyValuePair.Key.ToString()}, Value: {keyValuePair.Value.ToString()}");
+                Console.WriteLine($"Key: {keyValuePair.Key}, Value: {keyValuePair.Value.ToString()}");
             }
             
         }

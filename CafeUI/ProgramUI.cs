@@ -157,7 +157,7 @@ namespace CafeUI
             MenuItem foodToCheck = _itemsOnMenu.GetMenuItemByNumber(input);
             foreach (Ingredient ingredient in foodToCheck.Ingredients)
             {
-                Console.WriteLine(ingredient.Name);
+                Console.WriteLine(ingredient?.Name);
             }
         }
         private void SeedMenuItem()
@@ -171,7 +171,7 @@ namespace CafeUI
 
             MenuItem food1 = new MenuItem("1", "Bacon, Egg and Cheese Sandwich", "Relax with this tasty treat!", new List<Ingredient> { ing3, ing4, ing5 }, 4.50m);
             MenuItem food2 = new MenuItem("2", "Brownie", "Dark Chocolate never taste so good!", new List<Ingredient> { ing1, ing2 }, 2.50m);
-            MenuItem food3 = new MenuItem("3", "Coffee", "You're the same without your first cup!", new List<Ingredient> { }, 3m);
+            MenuItem food3 = new MenuItem("3", "Coffee", "You're the same even without your first cup!", new List<Ingredient> { }, 3m);
             MenuItem food4 = new MenuItem("4", "Frappe", "Gain that extra weight with a morning coffee milkshake!", new List<Ingredient> { }, 5m);
 
 

@@ -32,16 +32,20 @@ namespace _2_ClaimsRepository
 
         public void HandleNextClaim()
         {
-            //ClaimsModel claimsToPeek = new ClaimsModel();
-            Queue<ClaimsModel> claimsToPeek = new Queue<ClaimsModel>();
+           //ClaimsModel claimsToPeek = new ClaimsModel();
+           //Queue<ClaimsModel> claimsToPeek = new Queue<ClaimsModel>();
 
             
-            Console.WriteLine(_claims.Peek());
-
-            
+            Console.WriteLine(_claims.Count());
+            Console.WriteLine(_claims.Peek());            
 
         }
+        //private IEnumerable<ClaimsModel> GetClaimsModels()
+        //{
+        //    ClaimsModel newClaim = new ClaimsModel();
 
+        //   yield return newClaim;
+        //}
 
         private int IdCounter() => ++_idCounter;
         private DateTime ClaimsDate() => DateTime.Now;

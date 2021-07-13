@@ -12,16 +12,18 @@ namespace _3_BadgesUI
     {
         BadgesRepo _badgesRepo = new BadgesRepo();
         Dictionary<int, List<string>> _badgesList = new Dictionary<int, List<string>>();
-        
-
         public void Run()
         {
             SeedBadges();
             Menu();
         }
 
+
+
         private void Menu()
         {
+            Console.Clear();
+
             bool keepRunning = true;
             while (keepRunning)
             {
@@ -63,7 +65,7 @@ namespace _3_BadgesUI
             throw new NotImplementedException();
         }
 
-        private void ViewBadgesList()
+        public void ViewBadgesList()
         {
             Console.Clear();
             Console.WriteLine("Here are all badges currently on the system.");
@@ -73,7 +75,38 @@ namespace _3_BadgesUI
 
         private void CreateBadge()
         {
-            throw new NotImplementedException();
+            Console.Clear();
+            BadgesModel newBadge = new BadgesModel();
+            string input;
+            bool needMoreDoors = true;
+
+            Console.WriteLine("Badge Creation:\n" +
+                "What is the badge number?\n");
+            newBadge.BadgeID = Int32.Parse(Console.ReadLine());            
+
+            while (needMoreDoors)
+            {
+                string moreDoors;
+                Console.WriteLine("Do you need to add doors? (y/n)\n");
+                moreDoors = Console.ReadLine().ToLower();
+
+                if (moreDoors == "y")
+                {
+                    Console.WriteLine("What door will this badge access?\n" +
+                                        "(one door at a time)\n");
+                    input = Console.ReadLine();
+                    newBadge?.DoorNames?.Add(input);
+                    Console.WriteLine("Your door has been added!");
+                }
+                if (moreDoors == "n")
+                {
+                    Console.WriteLine("Heading back to main menu.");
+                    Console.ReadKey();
+                    needMoreDoors = false;
+                    Menu();
+                }
+                
+            }
         }
 
         private void SeedBadges()
@@ -92,7 +125,8 @@ namespace _3_BadgesUI
             _badgesList[3].Add("C2");
             _badgesList[4].Add("D5");
             _badgesList[5].Add("E12");
-            
+
+
         }
     }
 }

@@ -121,6 +121,7 @@ namespace _2_ClaimsUI
             Console.Clear();
             Console.WriteLine("Here are the details of the next claim to be handled.");
 
+
             _claimsInQueue.HandleNextClaim();
 
             Console.WriteLine("Do you want to deal with this claim? (y/n)");
