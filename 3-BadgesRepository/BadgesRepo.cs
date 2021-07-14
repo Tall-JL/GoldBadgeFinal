@@ -34,6 +34,23 @@ namespace _3_BadgesRepository
             return _badges;
         }
 
+        //public bool UpdateBadge(int oldID, BadgesModel newBadge)
+        //{
+        //    BadgesModel oldBadge = GetBadgeByKey(oldID);
+
+        //    if (oldBadge != null)
+        //    {
+        //        oldBadge.BadgeID = newBadge.BadgeID;
+        //        oldBadge.BadgeName = newBadge.BadgeName;
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+
+        //}
+
         public BadgesModel GetBadgeByKey(int badgeKey)
         {
             foreach (var badge in _badges)

@@ -17,9 +17,6 @@ namespace _3_BadgesUI
             SeedBadges();
             Menu();
         }
-
-
-
         private void Menu()
         {
             Console.Clear();
@@ -59,12 +56,74 @@ namespace _3_BadgesUI
                 Console.Clear();
             }
         }
-
         private void EditBadge()
         {
-            throw new NotImplementedException();
-        }
+            Console.Clear();
 
+            ViewBadgesList();
+            Console.WriteLine("---------------------------------\n");
+            Console.WriteLine("What badge number would you like to edit?\n");
+            int input = Int32.Parse(Console.ReadLine());
+            BadgesModel oldBadge = _badgesRepo.GetBadgeByKey(input);
+
+            Console.WriteLine($"Badge ID #{oldBadge.BadgeID} has access to ");
+            GetAllDoors(oldBadge);
+            
+            bool doorsToEdit = true;
+            while (doorsToEdit)
+            {
+                Console.WriteLine("Would you like to edit badge doors? (y/n)\n");
+                string answer = Console.ReadLine().ToLower();
+                if (answer == "y")
+                {
+                    Console.WriteLine("What would you like to do?\n\n" +
+                        "1. Remove a door\n" +
+                        "2. Add a door\n");
+                    int input2 = Int32.Parse(Console.ReadLine());
+
+                    switch (input2)
+                    {
+                        case 1:
+                            Console.WriteLine("What door would you like to remove?");
+                            string doorToRemove = Console.ReadLine();
+                            RemoveDoor(oldBadge.BadgeID, doorToRemove);
+                            break;
+                        case 2:
+                            Console.WriteLine("What door would you like to add?");
+                            string doorToAdd = Console.ReadLine();
+                            AddDoor(oldBadge.BadgeID, doorToAdd);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                if (answer == "n")
+                {
+                    Console.WriteLine("Editting done!");
+                    doorsToEdit = false;
+                }
+            }
+            Console.WriteLine($"Badge ID #{oldBadge.BadgeID} has access to ");
+            GetAllDoors(oldBadge);
+        }
+        private void AddDoor(int oldBadgeID, string doorToAdd)
+        {
+            BadgesModel badgeAddDoor = _badgesRepo.GetBadgeByKey(oldBadgeID);
+            badgeAddDoor?.DoorNames?.Add(doorToAdd);
+        }
+        private void RemoveDoor(int oldBadgeID, string doorToRemove)
+        {
+            BadgesModel badgeRemoveDoor = _badgesRepo.GetBadgeByKey(oldBadgeID);
+            badgeRemoveDoor?.DoorNames?.Remove(doorToRemove);
+        }
+        public void GetAllDoors(BadgesModel badge)
+        {
+            foreach (var doorname in badge.DoorNames)
+            {
+                Console.WriteLine(doorname);
+            }
+            
+        }
         public void ViewBadgesList()
         {
             Console.Clear();
@@ -74,7 +133,6 @@ namespace _3_BadgesUI
 
             ViewAllBadgesData(badgesInDatabase);
         }
-
         public void ViewAllBadgesData(Dictionary<int, BadgesModel> badgesModel)
         {
             foreach (var badge in badgesModel.Values)
@@ -82,27 +140,24 @@ namespace _3_BadgesUI
                 Console.WriteLine($"Badge ID: {badge.BadgeID}\n" +
                 $"Badge Name: {badge.BadgeName}");
 
-
                 foreach (var door in badge.DoorNames)
                 {
                     Console.WriteLine($"Door Names: {door}");
-                    
+
                 }
                 Console.WriteLine();
                 Console.WriteLine("------------------------------");
             }
-
         }
-        private void CreateBadge()
+        private bool CreateBadge()
         {
             Console.Clear();
             BadgesModel newBadge = new BadgesModel();
             string input;
             bool needMoreDoors = true;
 
-            Console.WriteLine("Badge Creation:\n" +
-                "What is the badge number?\n");
-            newBadge.BadgeID = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("What is the badge name:\n");
+            newBadge.BadgeName = Console.ReadLine();
 
             while (needMoreDoors)
             {
@@ -116,19 +171,32 @@ namespace _3_BadgesUI
                                         "(one door at a time)\n");
                     input = Console.ReadLine();
                     newBadge?.DoorNames?.Add(input);
-                    Console.WriteLine("Your door has been added!");
+                    Console.WriteLine("Your door has been added!\n");
                 }
                 if (moreDoors == "n")
                 {
                     Console.WriteLine("Heading back to main menu.");
                     Console.ReadKey();
                     needMoreDoors = false;
-                    Menu();
                 }
 
             }
-        }
 
+            bool success = true;
+            if (success)
+            {
+                _badgesRepo.AddBadge(newBadge);
+                Console.WriteLine("Badge successfully made!");
+
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Badge creation failed...");
+
+                return false;
+            }
+        }
         private void SeedBadges()
         {
             //_badgesList.Add(1, new List<string>());
@@ -147,8 +215,8 @@ namespace _3_BadgesUI
             //_badgesList[5].Add("E12");
 
             BadgesModel badgeA = new BadgesModel(new List<string> { "A1", "A2", "A3" }, "Main Badge");
-            BadgesModel badgeB = new BadgesModel(new List<string> { "B1", "E3" }, "Main Badge");
-            BadgesModel badgeC = new BadgesModel(new List<string> { "A10", "C2", "B3" }, "Main Badge");
+            BadgesModel badgeB = new BadgesModel(new List<string> { "B1", "E3" }, "Hall Badge");
+            BadgesModel badgeC = new BadgesModel(new List<string> { "A10", "C2", "B3" }, "Security Badge");
 
             _badgesRepo.AddBadge(badgeA);
             _badgesRepo.AddBadge(badgeB);

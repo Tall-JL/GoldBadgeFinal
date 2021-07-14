@@ -115,7 +115,7 @@ namespace _2_ClaimsUI
 
         private void NextClaim()
         {
-            //ClaimsModel nextClaim = new ClaimsModel();
+            
             Queue<ClaimsModel> nextClaim = new Queue<ClaimsModel>();
 
             Console.Clear();
