@@ -10,9 +10,7 @@ namespace CafeUI
 {
     class ProgramUI
     {
-        private MenuItemRepo _itemsOnMenu = new MenuItemRepo();
-        
-        
+        private MenuItemRepo _itemsOnMenu = new MenuItemRepo();      
         
         public void Run()
         {
@@ -109,8 +107,7 @@ namespace CafeUI
                     Console.WriteLine("What is the ingredient?");
                     newIng.Name = Console.ReadLine();
 
-                    newItem.Ingredients.Add(newIng);                                      
-                    
+                    newItem.Ingredients.Add(newIng);                        
                 }
                 else
                 {
@@ -129,13 +126,11 @@ namespace CafeUI
             {
                 return false;
             }
-        }        
-        //check list of items new obj................
+        }       
         private void ViewMenuItems()
         {
             Console.Clear();
-            Console.WriteLine("Below are the items we have available");
-            List<MenuItem> listOfItems = new List<MenuItem>();
+            Console.WriteLine("Below are the items we have available");            
 
             foreach (var item in _itemsOnMenu._items)
             {
@@ -144,7 +139,6 @@ namespace CafeUI
                     $"Meal Description: {item.Description}\n" +
                     $"Price: ${item.Price}\n");
             }
-
         }
         public void ViewIngredientsOnItem()
         {
@@ -168,12 +162,10 @@ namespace CafeUI
             Ingredient ing4 = new Ingredient("Eggs");
             Ingredient ing5 = new Ingredient("Cheese");
 
-
             MenuItem food1 = new MenuItem("1", "Bacon, Egg and Cheese Sandwich", "Relax with this tasty treat!", new List<Ingredient> { ing3, ing4, ing5 }, 4.50m);
             MenuItem food2 = new MenuItem("2", "Brownie", "Dark Chocolate never taste so good!", new List<Ingredient> { ing1, ing2 }, 2.50m);
             MenuItem food3 = new MenuItem("3", "Coffee", "You're the same even without your first cup!", new List<Ingredient> { }, 3m);
             MenuItem food4 = new MenuItem("4", "Frappe", "Gain that extra weight with a morning coffee milkshake!", new List<Ingredient> { }, 5m);
-
 
             _itemsOnMenu.AddIngredientToItem(food1, "Bacon");
             _itemsOnMenu.AddIngredientToItem(food1, "Eggs");

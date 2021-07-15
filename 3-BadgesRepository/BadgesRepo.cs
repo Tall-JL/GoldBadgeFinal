@@ -13,7 +13,6 @@ namespace _3_BadgesRepository
         private readonly Dictionary<int, BadgesModel> _badges = new Dictionary<int, BadgesModel>();
         private int _idCounter = default;
         //public int idCounter() => ++_idCounter;
-
         public bool AddBadge(BadgesModel newBadge)
         {
             if (newBadge == null)
@@ -28,7 +27,6 @@ namespace _3_BadgesRepository
                 return true;
             }
         }
-
         public Dictionary<int, BadgesModel> ViewAllBadges()
         {
             return _badges;
@@ -48,7 +46,6 @@ namespace _3_BadgesRepository
         //    {
         //        return false;
         //    }
-
         //}
 
         public BadgesModel GetBadgeByKey(int badgeKey)

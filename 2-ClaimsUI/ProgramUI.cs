@@ -55,8 +55,6 @@ namespace _2_ClaimsUI
                 Console.ReadKey();
                 Console.Clear();
             }
-
-
         }
 
         private bool NewClaim()
@@ -108,62 +106,38 @@ namespace _2_ClaimsUI
                 Console.WriteLine("You've failed to add a claim...");
                 return false;
             }
-
-
-
         }
 
         private void NextClaim()
         {
-            
-            Queue<ClaimsModel> nextClaim = new Queue<ClaimsModel>();
-
             Console.Clear();
             Console.WriteLine("Here are the details of the next claim to be handled.");
 
-
-             DisplayClaimInfo( _claimsInQueue.HandleNextClaim());
+            DisplayClaimInfo(_claimsInQueue.HandleNextClaim());
 
             Console.WriteLine("Do you want to deal with this claim? (y/n)");
             string input = Console.ReadLine().ToLower();
 
-            bool handlingQueue = true;
-            while (handlingQueue)
+            if (input == "y")
             {
-                if (input == "y" && _claimsInQueue._claims.Count > 0)
+                var success = _claimsInQueue.RemoveFromQueue();
+                if (success)
                 {
-
-                    _claimsInQueue._claims.Dequeue();
-                    Console.WriteLine("Claim removed from queue.");
-                    Console.ReadKey();
-                    NextClaim();
-
-
-                }
-                else if(input == "n")
-                {
-                    Console.WriteLine("Returning to main menu.");
-                    Console.ReadKey();
-                    handlingQueue = false;
-                    Menu();
-                }
-                else if(_claimsInQueue._claims.Count == 0)
-                {
-                    Console.WriteLine("No claims in queue.");
-                    Console.ReadKey();
-                    handlingQueue = false;
-                    Menu();
+                    Console.WriteLine("You deleted a claim!");
                 }
                 else
                 {
-                    Console.WriteLine("Enter y or n!");
-                    Console.ReadKey();
-                    handlingQueue = false;
-                    NextClaim();
-                }
-
+                    Console.WriteLine("Deletion failed...");
+                }                
             }
-            
+            else if (input == "n")
+            {
+                Menu();
+            }
+            else
+            {
+                Console.WriteLine("Invalid operation.");
+            }           
         }
         private void DisplayClaimInfo(ClaimsModel claimInfo)
         {
@@ -201,7 +175,6 @@ namespace _2_ClaimsUI
             ClaimsModel claim4 = new ClaimsModel(ClaimType.Car, "Dinosuar trampled car", "30,000", new DateTime(2021, 1, 12));
             ClaimsModel claim5 = new ClaimsModel(ClaimType.Theft, "Refridgerator ran away", "3,000", new DateTime(2021, 7, 9));
 
-            
             _claimsInQueue.AddToQueue(claim1);
             _claimsInQueue.AddToQueue(claim2);
             _claimsInQueue.AddToQueue(claim3);

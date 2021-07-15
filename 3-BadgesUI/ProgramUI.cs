@@ -121,8 +121,7 @@ namespace _3_BadgesUI
             foreach (var doorname in badge.DoorNames)
             {
                 Console.WriteLine(doorname);
-            }
-            
+            }            
         }
         public void ViewBadgesList()
         {
@@ -143,7 +142,6 @@ namespace _3_BadgesUI
                 foreach (var door in badge.DoorNames)
                 {
                     Console.WriteLine($"Door Names: {door}");
-
                 }
                 Console.WriteLine();
                 Console.WriteLine("------------------------------");
@@ -179,9 +177,7 @@ namespace _3_BadgesUI
                     Console.ReadKey();
                     needMoreDoors = false;
                 }
-
             }
-
             bool success = true;
             if (success)
             {
@@ -199,21 +195,6 @@ namespace _3_BadgesUI
         }
         private void SeedBadges()
         {
-            //_badgesList.Add(1, new List<string>());
-            //_badgesList.Add(2, new List<string>());
-            //_badgesList.Add(3, new List<string>());
-            //_badgesList.Add(4, new List<string>());
-            //_badgesList.Add(5, new List<string>());
-
-            //_badgesList[1].Add("A1");
-            //_badgesList[1].Add("A2");
-            //_badgesList[2].Add("B1");
-            //_badgesList[2].Add("B2");
-            //_badgesList[3].Add("C1");
-            //_badgesList[3].Add("C2");
-            //_badgesList[4].Add("D5");
-            //_badgesList[5].Add("E12");
-
             BadgesModel badgeA = new BadgesModel(new List<string> { "A1", "A2", "A3" }, "Main Badge");
             BadgesModel badgeB = new BadgesModel(new List<string> { "B1", "E3" }, "Hall Badge");
             BadgesModel badgeC = new BadgesModel(new List<string> { "A10", "C2", "B3" }, "Security Badge");

@@ -12,7 +12,6 @@ namespace CafeRepository
         public List<Ingredient> _ingredients = new List<Ingredient>();
         public List<MenuItem> _items = new List<MenuItem>();
         
-
         public bool AddItemToMenu (MenuItem item)
         {
             _items.Add(item);
@@ -31,7 +30,6 @@ namespace CafeRepository
                 name.Ingredients.Add(foodItem);
                 return true;
             }
-
         }
         public List<MenuItem> GetMenuItems()
         {

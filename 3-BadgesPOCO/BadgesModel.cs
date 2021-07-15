@@ -18,8 +18,7 @@ namespace _3_BadgesPOCO
         }
 
         public BadgesModel(List<string> doorNames, string badgeName)
-        {
-            
+        {            
             DoorNames = doorNames;
             BadgeName = badgeName;
         }

@@ -12,18 +12,25 @@ namespace _2_ClaimsRepository
         public Queue<ClaimsModel> _claims = new Queue<ClaimsModel>();
         private int _idCounter = default;
 
-
-
         public bool AddToQueue(ClaimsModel newClaim)
         {
             newClaim.ClaimID = IdCounter();
             newClaim.DateOfClaim = ClaimsDate();
-            newClaim.IsValid = IsValidCheck(newClaim.DateOfIncident, newClaim.DateOfClaim );
+            newClaim.IsValid = IsValidCheck(newClaim.DateOfIncident, newClaim.DateOfClaim);
 
             _claims.Enqueue(newClaim);
             return true;
         }
 
+        public bool RemoveFromQueue()
+        {
+            if (_claims.Count > 0)
+            {
+                _claims.Dequeue();
+                return true;
+            }
+            return false;
+        }
 
         public Queue<ClaimsModel> ViewAllClaims()
         {
@@ -31,30 +38,24 @@ namespace _2_ClaimsRepository
         }
 
         public ClaimsModel HandleNextClaim()
-        {        
-           
-            
+        {
             var claim = _claims.Peek();
-
             return claim;
         }
-        
 
-        private int IdCounter() => ++_idCounter;
-        private DateTime ClaimsDate() => DateTime.Now;
-        private bool IsValidCheck(DateTime accidentDate, DateTime dateToCheck)
+        public bool IsValidCheck(DateTime accidentDate, DateTime dateToCheck)
         {
             ClaimsModel newClaim = new ClaimsModel();
             if (dateToCheck >= accidentDate && dateToCheck < accidentDate.AddDays(30))
             {
                 return newClaim.IsValid = true;
-                
             }
             else
             {
                 return newClaim.IsValid = false;
-                
             }
         }
+        private DateTime ClaimsDate() => DateTime.Now;
+        private int IdCounter() => ++_idCounter;
     }
 }
