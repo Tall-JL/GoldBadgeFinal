@@ -21,7 +21,6 @@ namespace _2_ClaimsRepository
             _claims.Enqueue(newClaim);
             return true;
         }
-
         public bool RemoveFromQueue()
         {
             if (_claims.Count > 0)
@@ -31,18 +30,15 @@ namespace _2_ClaimsRepository
             }
             return false;
         }
-
         public Queue<ClaimsModel> ViewAllClaims()
         {
             return _claims;
         }
-
         public ClaimsModel HandleNextClaim()
         {
             var claim = _claims.Peek();
             return claim;
         }
-
         public bool IsValidCheck(DateTime accidentDate, DateTime dateToCheck)
         {
             ClaimsModel newClaim = new ClaimsModel();

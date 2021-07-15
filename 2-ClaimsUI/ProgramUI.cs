@@ -16,7 +16,6 @@ namespace _2_ClaimsUI
             SeedClaims();
             Menu();
         }
-
         private void Menu()
         {
             Console.Clear();
@@ -56,7 +55,6 @@ namespace _2_ClaimsUI
                 Console.Clear();
             }
         }
-
         private bool NewClaim()
         {
             ClaimsModel newClaim = new ClaimsModel();
@@ -107,7 +105,6 @@ namespace _2_ClaimsUI
                 return false;
             }
         }
-
         private void NextClaim()
         {
             Console.Clear();
@@ -149,7 +146,6 @@ namespace _2_ClaimsUI
                 $"Date of Claim: {claimInfo.DateOfClaim}\n" +
                 $"IsValid: {claimInfo.IsValid}\n");
         }
-
         private void ViewAllClaims()
         {
             Console.Clear();
@@ -166,7 +162,6 @@ namespace _2_ClaimsUI
                     $"IsVald: {claim.IsValid}\n");
             }
         }
-
         private void SeedClaims()
         {
             ClaimsModel claim1 = new ClaimsModel(ClaimType.Car, "Hit and Run", "500", new DateTime(2021, 4, 21));

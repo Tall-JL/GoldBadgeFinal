@@ -20,15 +20,19 @@ namespace _2_ClaimsUnitTest
 
             _claimsRepo.AddToQueue(_claimsModel);
         }
-
         [TestMethod]
         public void AddToQueue_AddsClaimModelToQueue_ReturnTrue()
         {
             bool result = _claimsRepo.AddToQueue(_claimsModel);
 
             Assert.IsTrue(result);
-        }
+        }[TestMethod]
+        public void RemoveFromQueue_RemovesClaimModelFromQueue_ReturnTrue()
+        {
+            bool result = _claimsRepo.RemoveFromQueue();
 
+            Assert.IsTrue(result);
+        }
         [TestMethod]
         public void HandleNextClaim_PeeksNextInQueue_ReturnClaimModel()
         {
@@ -36,7 +40,6 @@ namespace _2_ClaimsUnitTest
 
             Assert.AreEqual(result, _claimsModel);
         }
-
         [TestMethod]
         public void IsValid_ChecksTwoDatesToSeeIfItsInThirtyDays_ReturnTrue()
         {
